@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>موقع طلبات بوت ميرو</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      margin: 10;
+      padding: 10;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      color: #333;
+    }
+    .container {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 40px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+      margin-top: 110px; /* لإتاحة مساحة تحت العنوان الثابت */
+    }
+    .header {
+      position: fixed;
+      top: 10;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      text-align: center;
+      padding: 10px 10;
+      font-size: 24px;
+      color: #6500ff;
+      font-weight: bold;
+    }
+    .note {
+      background-color: #662bffca;
+      color: #ffffff;
+      padding: 5px;
+      border-radius: 80px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin: 1px 0 5px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    select, input, button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 0.5px solid #050505;
+      border-radius: 60px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    select:focus, input:focus {
+      border-color: #ff7f50;
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 127, 80, 0.3);
+      background-color: #00deccdd;
+    }
+    button {
+      background-color: #86ff6a;
+      color: #000000;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #80eaff;
+      box-shadow: 0 4px 10px rgba(37, 117, 252, 0.2);
+    }
+    .link {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .link a {
+      color: #2575fc;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    .link a:hover {
+      text-decoration: underline;
+    }
+    .footer-note {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #000000;
+      text-align: center;
+      background-color: #95e0ffb4;
+      padding: 10px;
+      border-radius: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+⭐    طلبات سحب بوت متجر ميرو ⭐
+  </div>
+
+  <div class="container">
+    <div class="note">
+      يرجى التأكد من إدخال جميع البيانات بشكل صحيح قبل الإرسال.
+    </div>
+    <form id="dataForm">
+      <label for="name">:الاسم</label>
+      <input type="text" id="name" name="name" placeholder="أدخل اسمك" required>
+      <label for="username">: اليوزر</label>
+      <input type="text" id="username" name="username" placeholder="@ ادخل يوزرك في التلجرام مع" required>
+      <label for="userId">:الايدي </label>
+      <input type="text" id="userId" name="userId" placeholder="أدخل الايدي الخاص بك في التلجرام " required>
+      <label for="type"> :نوع الطلب</label>
+      <select id="type" name="type" required>
+        <option value="">اضغط هنا للأختيار</option>
+        <option value="mastercard">ماستر كارد</option>
+        <option value="zaincash">زين كاش</option>
+        <option value="asiacell">رصيد اسيا</option>
+        <option value="atheer">رصيد اثير</option>
+        <option value="korek">رصيد كورك</option>
+        <option value="points">نقاط سنتات</option>
+        <option value="stars">نجوم تلجرام</option>
+        <option value="votes">تصويتات</option>
+      </select>
+
+      <div id="extraFields"></div>
+
+      <label for="quantity">الكمية:</label>
+      <input type="number" id="quantity" name="quantity" placeholder="أدخل الكمية المراد سحبها " required>
+
+      <label for="points">عدد النقاط:</label>
+      <input type="number" id="points" name="points" placeholder="أدخل عدد نقاطك في بوت ميرو" required>
+      <button type="submit">إرسال البيانات</button>
+    </form>
+    <div class="link">
+      <a href="https://t.me/mmaa1253" target="_self">اضغط هنا للانتقال الى قناة البوت </a>
+    </div>
+    <div class="footer-note">
+      ملاحظة: سيتم مراجعة طلبك والموافقة عليه خلال 24 ساعة 
+      </div>
+   <div class="footer-note">
+       لا تكرر الطلبات اكثر مرة في اليوم الواحد.
+   </div>
+   <div class="footer-note"> تابع قناة البوت ، . لمعرفة الاسعار وطرق السحب</div> 
+    </div>
+  </div>
+  
+  <script>
+    const typeField = document.getElementById('type');
+    const extraFields = document.getElementById('extraFields');
+    const quantityField = document.getElementById('quantity');
+    const form = document.getElementById('dataForm');
+
+    typeField.addEventListener('change', () => {
+      const selectedType = typeField.value;
+      extraFields.innerHTML = ''; // Clear existing fields
+
+      if (selectedType === 'mastercard' || selectedType === 'zaincash') {
+        extraFields.innerHTML = `
+          <label for="cardNumber">: رقم بطاقتك </label>
+          <input type="text" id="cardNumber" name="cardNumber" placeholder="أدخل رقم البطاقة" required>
+        `;
+      } else if (selectedType === 'asiacell' || selectedType === 'atheer' || selectedType === 'korek') {
+        extraFields.innerHTML = `
+          <label for="phoneNumber">: رقم الخط</label>
+          <input type="text" id="phoneNumber" name="phoneNumber" placeholder="أدخل رقم الخط او يوزر حسابك حتى نرسلك كارت" required>
+        `;
+      } else if (selectedType === 'points') {
+        extraFields.innerHTML = `
+          <label for="accountNumber">: رقم الحساب</label>
+          <input type="text" id="accountNumber" name="accountNumber" placeholder="أدخل رمز احالتك في سنتات " required>
+        `;
+        quantityField.outerHTML = `
+          <label for="quantity">: الكمية المراد سحبها</label>
+          <select id="quantity" name="quantity" required>
+            <option value="">اختر الكمية من هنا</option>
+            <option value="2000">2000</option>
+            <option value="4000">4000</option>
+            <option value="6000">6000</option>
+            <option value="8000">8000</option>
+            <option value="10000">10000</option>
+          </select>
+        `;
+      } else if (selectedType === 'stars' || selectedType === 'votes') {
+        extraFields.innerHTML = selectedType === 'votes' 
+          ? `<label for="voteLink">رابط التصويت:</label>
+             <input type="url" id="voteLink" name="voteLink" placeholder="أدخل رابط التصويت (رابط المسابقة)" required>`
+          : '';
+        quantityField.outerHTML = `
+          <label for="quantity">الكمية:</label>
+          <select id="quantity" name="quantity" required>
+            <option value="">اختر الكمية</option>
+            <option value="40">40 👥</option>
+            <option value="80">80 👥</option>
+            <option value="120">120 👥</option>
+            <option value="160">160 👥</option>
+            <option value="240">240 👥</option>
+          </select>
+        `;
+      } else {
+        quantityField.outerHTML = `
+          <label for="quantity">الكمية:</label>
+          <input type="number" id="quantity" name="quantity" placeholder="أدخل الكمية" required>
+        `;
+      }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      data.date = new Date().toLocaleString(); // Add current date and time
+
+      fetch(`https://api.telegram.org/bot7841572342:AAGYQ6KJ4ek56PV3-8_xTi4ralF7Hmgz8o4/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: '-1002370208756',
+          text: `
+           👥 الاسم: ${data.name}
+           ⭐ اليوزر: ${data.username}
+            🆔 الايدي: ${data.userId}
+           ✔️ النوع: ${data.type}
+            ${data.cardNumber ? 'رقم البطاقة: ' + data.cardNumber : ''}
+            ${data.phoneNumber ? 'رقم الخط: ' + data.phoneNumber : ''}
+            ${data.accountNumber ? 'رقم الحساب: ' + data.accountNumber : ''}
+            ${data.voteLink ? 'رابط التصويت: ' + data.voteLink : ''}
+            ⭐الكمية: ${data.quantity}
+            ⭐النقاط: ${data.points}
+            ⭐التاريخ: ${data.date}
+          `
+        })
+      }).then(() => {
+        alert('تم الإرسال بنجاح، انتظر الموافقة.');
+        form.reset();
+        extraFields.innerHTML = '';
+      }).catch((err) => {
+        alert('حدث خطأ أثناء الإرسال.');
+        console.error(err);
+      });
+    });
+  </script>
+</body>
+  </html>

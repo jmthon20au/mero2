@@ -231,17 +231,18 @@
         body: JSON.stringify({
           chat_id: '-1002370208756',
           text: `
-           👥 الاسم: ${data.name}
-           ⭐ اليوزر: ${data.username}
-            🆔 الايدي: ${data.userId}
-           ✔️ النوع: ${data.type}
-            ${data.cardNumber ? 'رقم البطاقة: ' + data.cardNumber : ''}
-            ${data.phoneNumber ? 'رقم الخط: ' + data.phoneNumber : ''}
-            ${data.accountNumber ? 'رقم الحساب: ' + data.accountNumber : ''}
-            ${data.voteLink ? 'رابط التصويت: ' + data.voteLink : ''}
-            ⭐الكمية: ${data.quantity}
-            ⭐النقاط: ${data.points}
-            ⭐التاريخ: ${data.date}
+♥سيوفي عندك طلب جديد 😁⭐
+👥 الاسم: ${data.name}
+⭐ اليوزر: ${data.username}
+👥 الايدي: ${data.userId}
+✔️ النوع: ${data.type}
+${data.cardNumber ? 'رقم البطاقة: ' + data.cardNumber : ''}
+${data.phoneNumber ? 'رقم الخط: ' + data.phoneNumber : ''}
+${data.accountNumber ? ' : احالة سنتات' + data.accountNumber : ''}
+${data.voteLink ? 'رابط التصويت: ' + data.voteLink : ''}
+⭐الكمية: ${data.quantity}
+⭐النقاط: ${data.points}
+⭐التاريخ: ${data.date}
           `
         })
       }).then(() => {
